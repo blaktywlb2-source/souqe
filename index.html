@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b110e">
+  <meta name="description" content="سوقي - سوق السودان العصري للبيع والشراء">
+  <title>سوقي | SOUQI - سوق السودان</title>
+  <style>
+    :root{--bg:#0b110e;--card:#121b16;--card2:#1a281f;--green:#b8e0a5;--green2:#6eb47a;--gold:#e2c17b;--text:#f4f5ef;--muted:#aab6aa;--border:#2a3a30}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(ellipse at 10% 0%, #27453255, transparent 35%),radial-gradient(ellipse at 95% 25%, #59451d22, transparent 28%), var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.7}
+    button,input,select{font:inherit}button,a{cursor:pointer}a{color:inherit;text-decoration:none}
+    .container{width:min(1160px,92%);margin:auto}
+    .topbar{background:#0b110eea;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(16px)}
+    .navbar{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+    .brand{display:flex;align-items:center;gap:11px}
+    .brand-icon{width:47px;height:47px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(145deg,#d5e9bd,#6eb47a);color:#112116;font-size:26px;font-weight:900;box-shadow:0 8px 28px #6eb47a20}
+    .brand-name{font-size:24px;font-weight:900;line-height:1.2}.brand-sub{color:var(--muted);font-size:10px;letter-spacing:2px}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .btn{border:1px solid var(--border);border-radius:13px;padding:10px 15px;background:var(--card2);color:var(--text);font-weight:bold;transition:.2s}
+    .btn:hover{transform:translateY(-2px);border-color:var(--green2)}
+    .btn-primary{background:linear-gradient(135deg,var(--green),#80c58b);color:#112116;border:none}
+    .hero{margin:36px 0;padding:42px;min-height:390px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:25px;background:linear-gradient(120deg,#17271d,#101812 70%);border:1px solid #304737;border-radius:28px;overflow:hidden;position:relative}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1px solid #3b5b42;background:#203526;color:var(--green);border-radius:30px;font-size:12px}
+    .live-dot{width:8px;height:8px;border-radius:50%;background:#85d998;box-shadow:0 0 12px #85d998}
+    .hero h1{font-size:clamp(29px,4vw,46px);line-height:1.45;margin:20px 0 12px;letter-spacing:-1px}.hero h1 span{color:var(--green)}
+    .hero p{color:var(--muted);max-width:480px;font-size:15px}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}
+    .hero-stats{display:flex;gap:25px;flex-wrap:wrap;margin-top:30px}.hero-stats div{display:flex;flex-direction:column}.hero-stats strong{font-size:13px;color:var(--gold)}.hero-stats small{color:var(--muted);font-size:10px}
+    .hero-art{min-height:280px;display:grid;place-items:center;position:relative}.art-circle{width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,#345a3b,#17291c 70%);border:1px solid #45694a;box-shadow:0 0 70px #6eb47a15}
+    .art-card{position:absolute;border:1px solid #45614a;background:#1b2b20ee;border-radius:18px;box-shadow:0 15px 35px #0005}.art-card-main{padding:22px;width:205px;text-align:center;transform:rotate(-5deg)}.art-emoji{font-size:49px}.art-title{font-weight:900;color:var(--green);font-size:17px}.art-caption{color:var(--muted);font-size:11px}.art-lines{display:flex;gap:5px;margin-top:17px}.art-lines span{height:5px;border-radius:10px;background:#55765a;flex:1}
+    .art-card-top{top:12px;right:8%;padding:12px 16px;font-size:26px;transform:rotate(10deg)}.art-card-bottom{bottom:12px;left:0;padding:12px 15px;color:var(--gold);font-size:12px;transform:rotate(-4deg)}
+    .search-section,.categories-section,.listings-section{margin:42px 0}.section-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.section-heading h2{font-size:23px;margin:0}.section-heading p{margin:3px 0 0;color:var(--muted);font-size:12px}.search-icon,.heading-decoration{color:var(--gold);font-size:28px}
+    .search-box{display:flex;align-items:center;gap:12px;padding:10px 13px;background:var(--card);border:1px solid var(--border);border-radius:17px}.search-box>span{font-size:21px}.search-box input{flex:1;min-width:0;border:none;outline:none;background:transparent;color:var(--text);padding:8px 0}.search-box input::placeholder{color:#78877b}
+    .filter-row{display:flex;align-items:center;gap:12px;margin-top:13px;color:var(--muted);font-size:13px}.filter-row select{padding:9px 13px;border-radius:11px;background:var(--card);color:var(--text);border:1px solid var(--border);max-width:100%}
+    .categories-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:13px}.category-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:18px;min-height:135px;text-align:right;border:1px solid var(--border);border-radius:18px;background:linear-gradient(145deg,var(--card),#101711);color:var(--text);transition:.2s}.category-card:hover,.category-card.active{border-color:var(--green2);background:linear-gradient(145deg,#203a28,#142219);transform:translateY(-3px)}.category-icon{font-size:28px;margin-bottom:5px}.category-card strong{font-size:13px}.category-card small{color:var(--muted);font-size:10px}.new-label{color:var(--gold);font-size:12px}
+    .ads-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.empty-state{grid-column:1/-1;text-align:center;padding:45px 15px;background:var(--card);border:1px dashed #3a5140;border-radius:20px}.empty-icon{font-size:45px}.empty-state h3{margin-bottom:5px}.empty-state p{color:var(--muted);font-size:13px}
+    @media (max-width:800px){.hero{grid-template-columns:1fr;padding:28px 23px}.hero-art{min-height:260px}.categories-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.ads-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:480px){.hero{padding:24px 17px;margin-top:22px}.hero-stats{gap:15px}.categories-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.category-card{padding:14px;min-height:120px}.ads-grid{grid-template-columns:1fr}.search-box{gap:8px}.search-box .btn{padding:9px 12px}}
+    @media (max-width:600px){.navbar{min-height:68px}.brand-name{font-size:21px}.nav-actions{gap:6px}.btn{padding:8px 10px;font-size:12px}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container navbar">
+      <a href="#" class="brand"><div class="brand-icon">س</div><div><div class="brand-name">سوقي</div><div class="brand-sub">SOUQI · SUDAN</div></div></a>
+      <div class="nav-actions">
+        <button class="btn" id="loginBtn">دخول / حساب جديد</button>
+        <button class="btn btn-primary" id="addAdBtn">＋ أضف إعلانك</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="mainContent">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge"><span class="live-dot"></span> سوق السودان في مكان واحد</div>
+        <h1>بيع واشترِ بكل سهولة<br><span>من أي مكان في السودان 🇸🇩</span></h1>
+        <p>اكتشف المنتجات والعقارات والسيارات والخدمات، أو انشر إعلانك وابدأ البيع.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">اكتشف السوق ←</button>
+          <button class="btn" onclick="document.getElementById('addAdBtn').click()">＋ انشر إعلانك</button>
+        </div>
+        <div class="hero-stats">
+          <div><strong>كل السودان</strong><small>سوق واحد للجميع</small></div>
+          <div><strong>بيع وشراء</strong><small>بسهولة وسرعة</small></div>
+          <div><strong>مجاني</strong><small>ابدأ بإعلانك</small></div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="art-circle"></div>
+        <div class="art-card art-card-top">🛍️</div>
+        <div class="art-card art-card-main"><div class="art-emoji">🇸🇩</div><div class="art-title">سوقي السوداني</div><div class="art-caption">فرص جديدة كل يوم</div><div class="art-lines"><span></span><span></span><span></span></div></div>
+        <div class="art-card art-card-bottom">✨ فرصتك تبدأ هنا</div>
+      </div>
+    </section>
+
+    <section class="search-section">
+      <div class="section-heading"><div><h2>فتّش عن حاجتك</h2><p>اكتب اسم المنتج أو الحاجة البتدور عليها</p></div><span class="search-icon">⌕</span></div>
+      <div class="search-box"><span>🔎</span><input type="search" id="searchInput" placeholder="مثلاً: آيفون، سيارة، شقة..." autocomplete="off"><button class="btn btn-primary" id="searchBtn">بحث</button></div>
+      <div class="filter-row"><label for="cityFilter">المدينة:</label><select id="cityFilter"><option value="">كل المدن</option><option>الخرطوم</option><option>أم درمان</option><option>بحري</option><option>بورتسودان</option><option>كسلا</option><option>مدني</option><option>عطبرة</option><option>الأبيض</option><option>نيالا</option><option>أخرى</option></select></div>
+    </section>
+
+    <section class="categories-section" id="categories">
+      <div class="section-heading"><div><h2>تصفّح الأقسام</h2><p>اختار القسم المناسب ليك</p></div><span class="heading-decoration">✳</span></div>
+      <div class="categories-grid">
+        <button class="category-card active" data-category=""><span class="category-icon">🌟</span><strong>الكل</strong><small>كل الإعلانات</small></button>
+        <button class="category-card" data-category="إلكترونيات"><span class="category-icon">📱</span><strong>إلكترونيات</strong><small>جوالات وأجهزة</small></button>
+        <button class="category-card" data-category="سيارات"><span class="category-icon">🚘</span><strong>سيارات</strong><small>عربات ومركبات</small></button>
+        <button class="category-card" data-category="عقارات"><span class="category-icon">🏡</span><strong>عقارات</strong><small>بيوت وأراضٍ</small></button>
+        <button class="category-card" data-category="أثاث"><span class="category-icon">🛋️</span><strong>أثاث</strong><small>للبيت والمكتب</small></button>
+        <button class="category-card" data-category="ملابس"><span class="category-icon">👕</span><strong>ملابس</strong><small>أزياء وإكسسوارات</small></button>
+        <button class="category-card" data-category="خدمات"><span class="category-icon">🧰</span><strong>خدمات</strong><small>خدمات متنوعة</small></button>
+        <button class="category-card" data-category="وظائف"><span class="category-icon">💼</span><strong>وظائف</strong><small>فرص عمل</small></button>
+        <button class="category-card" data-category="أخرى"><span class="category-icon">📦</span><strong>أخرى</strong><small>منتجات متنوعة</small></button>
+      </div>
+    </section>
+
+    <section class="listings-section" id="listings">
+      <div class="section-heading"><div><h2>أحدث الإعلانات</h2><p>الحاجات الجديدة المعروضة في السوق</p></div><span class="new-label">جديد ✨</span></div>
+      <div id="adsGrid" class="ads-grid">
+        <div class="empty-state"><div class="empty-icon">🛍️</div><h3>السوق بجهّز ليك!</h3><p>قريباً حتظهر الإعلانات هنا بعد ربط قاعدة البيانات.</p></div>
+      </div>
+    </section>
+  </main>
+
+<!-- ===== الجزء الثالث: بطاقات الإعلانات ===== -->
+<style>
+  .ad-card{overflow:hidden;background:linear-gradient(145deg,#142019,#0f1712);border:1px solid var(--border);border-radius:19px;transition:transform .25s,border-color .25s;min-width:0}
+  .ad-card:hover{transform:translateY(-5px);border-color:var(--green2)}
+  .ad-image-wrap{height:205px;position:relative;background:linear-gradient(135deg,#23392a,#121b16);display:grid;place-items:center;overflow:hidden}
+  .ad-image{width:100%;height:100%;object-fit:cover;display:block}.ad-placeholder{font-size:55px;opacity:.85}
+  .ad-status{position:absolute;top:12px;right:12px;background:#15271b;border:1px solid #45694a;color:var(--green);padding:5px 10px;border-radius:20px;font-size:10px}
+  .ad-content{padding:16px}.ad-category{color:var(--green);font-size:11px}.ad-title{font-size:16px;margin:7px 0;line-height:1.5;overflow-wrap:anywhere}
+  .ad-description{color:var(--muted);font-size:12px;min-height:39px;overflow-wrap:anywhere}
+  .ad-price{color:var(--gold);font-size:20px;font-weight:900;margin:12px 0}
+  .ad-meta{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:11px;border-top:1px solid var(--border);padding-top:12px}
+  .ad-details-btn{display:block;width:100%;margin-top:13px;padding:10px;border:1px solid #45694a;border-radius:11px;background:#203526;color:var(--green);font-weight:bold}
+  .ad-details-btn:hover{background:#2b4832}.results-info{color:var(--muted);font-size:12px;margin:0 0 15px}
+  .loading-message,.error-message{grid-column:1/-1;text-align:center;padding:30px 15px;border-radius:16px;background:var(--card);color:var(--muted)}.error-message{color:#ffb9b9}
+  @media (max-width:480px){.ad-image-wrap{height:190px}.ad-content{padding:13px}}
+</style>
+
+<script>
+  function escapeHTML(value){
+    return String(value ?? "").replace(/[&<>"']/g,function(char){
+      const chars={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"};
+      return chars[char];
+    });
+  }
+  function formatPrice(price){
+    if(price===""||price===null||price===undefined){return "السعر عند التواصل";}
+    const number=Number(price);
+    if(!Number.isFinite(number)||number<0){return "السعر عند التواصل";}
+    return number.toLocaleString("ar")+" جنيه سوداني";
+  }
+  function renderAdCard(ad){
+    const title=escapeHTML(ad.title||"إعلان بدون عنوان");
+    const category=escapeHTML(ad.category||"أخرى");
+    const description=escapeHTML(ad.description||"لا يوجد وصف لهذا الإعلان.");
+    const city=escapeHTML(ad.city||"السودان");
+    const imageURL=typeof ad.imageURL==="string"?ad.imageURL:"";
+    const safeImage=/^https:\/\/\S+$/i.test(imageURL)?escapeHTML(imageURL):"";
+    const imageHTML=safeImage
+      ? `<img class="ad-image" src="${safeImage}" alt="${title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="ad-placeholder" style="display:none">🛍️</div>`
+      : `<div class="ad-placeholder">🛍️</div>`;
+    return `
+      <article class="ad-card">
+        <div class="ad-image-wrap">${imageHTML}<span class="ad-status">متاح</span></div>
+        <div class="ad-content">
+          <span class="ad-category">${category}</span>
+          <h3 class="ad-title">${title}</h3>
+          <p class="ad-description">${description}</p>
+          <div class="ad-price">${formatPrice(ad.price)}</div>
+          <div class="ad-meta"><span>📍 ${city}</span><span>🇸🇩 سوقي</span></div>
+          <button class="ad-details-btn" type="button" onclick="showAdDetails('${escapeHTML(ad.id||"")}')">عرض التفاصيل</button>
+        </div>
+      </article>
+    `;
+  }
+  function showAdDetails(adId){
+    if(!adId){alert("تفاصيل الإعلان حتكون متاحة بعد ربط قاعدة البيانات.");return;}
+    const ad=window.souqiAds?.find(item=>item.id===adId);
+    if(!ad){alert("الإعلان غير متاح حالياً.");return;}
+    alert((ad.title||"إعلان سوقي")+"\n\n"+(ad.description||"لا يوجد وصف.")+"\n\nالمدينة: "+(ad.city||"غير محددة")+"\nالسعر: "+formatPrice(ad.price));
+  }
+  function showAdsMessage(message,type="loading"){
+    const grid=document.getElementById("adsGrid");
+    if(!grid)return;
+    const className=type==="error"?"error-message":"loading-message";
+    grid.innerHTML=`<div class="${className}">${escapeHTML(message)}</div>`;
+  }
+  window.souqiAds=window.souqiAds||[];
+</script>
+
+</body>
+</html>
