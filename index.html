@@ -4,70 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0b110e">
-<meta name="description" content="سوقي - سوق السودان للبيع والشراء">
 <title>سوقي | SOUQI</title>
 <style>
 :root{--bg:#0b110e;--card:#121b16;--card2:#1a281f;--green:#b8e0a5;--green2:#6eb47a;--gold:#e2c17b;--text:#f4f5ef;--muted:#aab6aa;--border:#2a3a30}
-*{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at 10% 0%,#27453255,transparent 35%),var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.7}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-.container{width:min(1160px,92%);margin:auto}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.7}
+button,input,select,textarea{font:inherit}button{cursor:pointer}.container{width:min(1160px,92%);margin:auto}
 .topbar{position:sticky;top:0;z-index:10;background:#0b110ef2;border-bottom:1px solid var(--border)}
 .navbar{min-height:72px;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .brand{display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none}
 .brand-icon{width:45px;height:45px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(145deg,#d5e9bd,#6eb47a);color:#112116;font-size:25px;font-weight:bold}
-.brand-name{font-size:23px;font-weight:900}
-.brand-sub{color:var(--muted);font-size:10px;letter-spacing:2px}
+.brand-name{font-size:23px;font-weight:900}.brand-sub{color:var(--muted);font-size:10px;letter-spacing:2px}
 .nav-actions,.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .btn{border:1px solid var(--border);border-radius:12px;padding:10px 14px;background:var(--card2);color:var(--text);font-weight:bold}
 .btn-primary{background:linear-gradient(135deg,var(--green),#80c58b);color:#112116;border:0}
 .btn:disabled{opacity:.55;cursor:not-allowed}
 .hero{margin:30px 0;padding:38px;background:linear-gradient(120deg,#17271d,#101812 70%);border:1px solid #304737;border-radius:25px}
 .hero-badge{display:inline-block;padding:6px 12px;border:1px solid #3b5b42;background:#203526;color:var(--green);border-radius:25px;font-size:12px}
-.hero h1{font-size:clamp(28px,4vw,44px);line-height:1.5;margin:18px 0 10px}
-.hero h1 span{color:var(--green)}
-.hero p,.muted{color:var(--muted)}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-section{margin:35px 0}
-.heading{margin-bottom:16px}
-.heading h2{margin:0;font-size:23px}
-.heading p{margin:4px 0;color:var(--muted);font-size:13px}
+.hero h1{font-size:clamp(28px,4vw,44px);line-height:1.5;margin:18px 0 10px}.hero h1 span{color:var(--green)}
+.hero p,.muted{color:var(--muted)}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+section{margin:35px 0}.heading{margin-bottom:16px}.heading h2{margin:0;font-size:23px}.heading p{margin:4px 0;color:var(--muted);font-size:13px}
 .search-box{display:flex;gap:10px;align-items:center;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:15px}
 .search-box input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--text);padding:8px}
-.filters{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-select,input,textarea{background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px;max-width:100%}
-.filters select{flex:1;min-width:150px}
-.categories-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-.category-card{padding:15px;text-align:right;border:1px solid var(--border);border-radius:15px;background:var(--card);color:var(--text)}
-.category-card.active,.category-card:hover{border-color:var(--green2);background:#203a28}
-.category-card span{display:block;font-size:24px}
-.category-card strong{font-size:13px}
-.ads-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
-.ad-card{padding:17px;background:linear-gradient(145deg,#142019,#0f1712);border:1px solid var(--border);border-radius:17px;min-width:0}
-.ad-category{color:var(--green);font-size:12px}
-.ad-title{margin:7px 0;font-size:18px;overflow-wrap:anywhere}
-.ad-description{color:var(--muted);font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere}
-.ad-price{color:var(--gold);font-size:19px;font-weight:900;margin:12px 0}
-.ad-meta{color:var(--muted);font-size:12px;border-top:1px solid var(--border);padding-top:10px}
-.ad-card .actions{margin-top:13px}
-.ad-card .btn{flex:1;text-align:center;padding:9px 8px;font-size:12px}
-.whatsapp{background:#163b27;border-color:#2c6943;color:#baf0c6}
-.empty-state,.message{grid-column:1/-1;text-align:center;padding:30px 15px;background:var(--card);border:1px dashed #3a5140;border-radius:17px;color:var(--muted)}
-.error{color:#ffb9b9}
-.modal{position:fixed;inset:0;background:#000b;z-index:100;display:none;align-items:center;justify-content:center;padding:15px;overflow:auto}
-.modal.open{display:flex}
-.modal-box{width:min(520px,100%);max-height:92vh;overflow:auto;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px}
-.modal-header{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.modal-header h2{margin:0;font-size:21px}
-.close-btn{font-size:23px;background:none;border:0;color:var(--text)}
-.form-grid{display:grid;gap:12px;margin-top:15px}
-.form-grid label{display:grid;gap:6px;font-size:13px;color:var(--muted)}
-.form-grid input,.form-grid textarea,.form-grid select{width:100%;color:var(--text)}
-.form-grid textarea{min-height:100px;resize:vertical}
-.form-grid .btn{width:100%}
-.notice{font-size:12px;color:var(--muted)}
-#userStatus{font-size:12px;color:var(--green)}
+.filters{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}select,input,textarea{background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px;max-width:100%}.filters select{flex:1;min-width:150px}
+.categories-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.category-card{padding:15px;text-align:right;border:1px solid var(--border);border-radius:15px;background:var(--card);color:var(--text)}.category-card.active,.category-card:hover{border-color:var(--green2);background:#203a28}.category-card span{display:block;font-size:24px}.category-card strong{font-size:13px}
+.ads-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.ad-card{padding:17px;background:linear-gradient(145deg,#142019,#0f1712);border:1px solid var(--border);border-radius:17px;min-width:0}.ad-category{color:var(--green);font-size:12px}.ad-title{margin:7px 0;font-size:18px;overflow-wrap:anywhere}.ad-description{color:var(--muted);font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere}.ad-price{color:var(--gold);font-size:19px;font-weight:900;margin:12px 0}.ad-meta{color:var(--muted);font-size:12px;border-top:1px solid var(--border);padding-top:10px}.ad-card .actions{margin-top:13px}.ad-card .btn{flex:1;text-align:center;padding:9px 8px;font-size:12px}.whatsapp{background:#163b27;border-color:#2c6943;color:#baf0c6}
+.empty-state,.message{grid-column:1/-1;text-align:center;padding:30px 15px;background:var(--card);border:1px dashed #3a5140;border-radius:17px;color:var(--muted)}.error{color:#ffb9b9}
+.modal{position:fixed;inset:0;background:#000b;z-index:100;display:none;align-items:center;justify-content:center;padding:15px;overflow:auto}.modal.open{display:flex}.modal-box{width:min(520px,100%);max-height:92vh;overflow:auto;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px}.modal-header{display:flex;justify-content:space-between;align-items:center;gap:10px}.modal-header h2{margin:0;font-size:21px}.close-btn{font-size:23px;background:none;border:0;color:var(--text)}.form-grid{display:grid;gap:12px;margin-top:15px}.form-grid label{display:grid;gap:6px;font-size:13px;color:var(--muted)}.form-grid input,.form-grid textarea,.form-grid select{width:100%;color:var(--text)}.form-grid textarea{min-height:100px;resize:vertical}.form-grid .btn{width:100%}.notice{font-size:12px;color:var(--muted)}#userStatus{font-size:12px;color:var(--green)}
 @media(max-width:800px){.ads-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.categories-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:26px}}
 @media(max-width:520px){.navbar{padding:9px 0;align-items:flex-start}.brand-name{font-size:19px}.nav-actions{justify-content:flex-end}.btn{padding:9px;font-size:12px}.ads-grid{grid-template-columns:1fr}.categories-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:22px 17px}}
 </style>
@@ -75,16 +37,8 @@ select,input,textarea{background:var(--card);border:1px solid var(--border);bord
 <body>
 <header class="topbar">
   <div class="container navbar">
-    <a href="#" class="brand">
-      <div class="brand-icon">س</div>
-      <div><div class="brand-name">سوقي</div><div class="brand-sub">SOUQI · SUDAN</div></div>
-    </a>
-    <div class="nav-actions">
-      <span id="userStatus"></span>
-      <button class="btn" id="loginBtn">دخول / حساب جديد</button>
-      <button class="btn" id="logoutBtn" hidden>خروج</button>
-      <button class="btn btn-primary" id="addAdBtn">＋ أضف إعلانك</button>
-    </div>
+    <a href="#" class="brand"><div class="brand-icon">س</div><div><div class="brand-name">سوقي</div><div class="brand-sub">SOUQI · SUDAN</div></div></a>
+    <div class="nav-actions"><span id="userStatus"></span><button class="btn" id="loginBtn">دخول / حساب جديد</button><button class="btn" id="logoutBtn" hidden>خروج</button><button class="btn btn-primary" id="addAdBtn">＋ أضف إعلانك</button></div>
   </div>
 </header>
 
@@ -93,35 +47,13 @@ select,input,textarea{background:var(--card);border:1px solid var(--border);bord
     <div class="hero-badge">🇸🇩 سوق السودان في مكان واحد</div>
     <h1>بيع واشترِ بكل سهولة<br><span>من أي مكان في السودان</span></h1>
     <p>انشر إعلانك، اكتشف المنتجات والعقارات والسيارات والخدمات، وتواصل مباشرة مع أصحاب الإعلانات.</p>
-    <div class="hero-actions">
-      <button class="btn btn-primary" onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'})">اكتشف الإعلانات ←</button>
-      <button class="btn" onclick="document.getElementById('addAdBtn').click()">＋ انشر إعلانك</button>
-    </div>
+    <div class="hero-actions"><button class="btn btn-primary" onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'})">اكتشف الإعلانات ←</button><button class="btn" onclick="document.getElementById('addAdBtn').click()">＋ انشر إعلانك</button></div>
   </section>
-
   <section>
     <div class="heading"><h2>فتّش عن حاجتك</h2><p>ابحث بالعنوان ثم صفِّ النتائج حسب القسم والمدينة.</p></div>
-    <div class="search-box">
-      <span>🔎</span>
-      <input id="searchInput" type="search" placeholder="مثلاً: آيفون، سيارة، شقة...">
-      <button class="btn btn-primary" id="searchBtn">بحث</button>
-    </div>
-    <div class="filters">
-      <select id="categoryFilter" aria-label="القسم">
-        <option value="">كل الأقسام</option>
-        <option>إلكترونيات</option><option>سيارات</option><option>عقارات</option>
-        <option>أثاث</option><option>ملابس</option><option>خدمات</option>
-        <option>وظائف</option><option>أخرى</option>
-      </select>
-      <select id="cityFilter" aria-label="المدينة">
-        <option value="">كل المدن</option>
-        <option>الخرطوم</option><option>أم درمان</option><option>بحري</option>
-        <option>بورتسودان</option><option>كسلا</option><option>مدني</option>
-        <option>عطبرة</option><option>الأبيض</option><option>نيالا</option><option>أخرى</option>
-      </select>
-    </div>
+    <div class="search-box"><span>🔎</span><input id="searchInput" type="search" placeholder="مثلاً: آيفون، سيارة، شقة..."><button class="btn btn-primary" id="searchBtn">بحث</button></div>
+    <div class="filters"><select id="categoryFilter"><option value="">كل الأقسام</option><option>إلكترونيات</option><option>سيارات</option><option>عقارات</option><option>أثاث</option><option>ملابس</option><option>خدمات</option><option>وظائف</option><option>أخرى</option></select><select id="cityFilter"><option value="">كل المدن</option><option>الخرطوم</option><option>أم درمان</option><option>بحري</option><option>بورتسودان</option><option>كسلا</option><option>مدني</option><option>عطبرة</option><option>الأبيض</option><option>نيالا</option><option>أخرى</option></select></div>
   </section>
-
   <section>
     <div class="heading"><h2>تصفّح الأقسام</h2><p>اختار القسم المناسب ليك.</p></div>
     <div class="categories-grid" id="categories">
@@ -136,94 +68,58 @@ select,input,textarea{background:var(--card);border:1px solid var(--border);bord
       <button class="category-card" data-category="أخرى"><span>📦</span><strong>أخرى</strong></button>
     </div>
   </section>
-
-  <section id="listings">
-    <div class="heading"><h2>أحدث الإعلانات</h2><p id="resultsCount">جاري الاتصال بقاعدة البيانات...</p></div>
-    <div id="adsGrid" class="ads-grid"><div class="empty-state">جاري تحميل الإعلانات...</div></div>
-  </section>
+  <section id="listings"><div class="heading"><h2>أحدث الإعلانات</h2><p id="resultsCount">جاري الاتصال بقاعدة البيانات...</p></div><div id="adsGrid" class="ads-grid"><div class="empty-state">جاري تحميل الإعلانات...</div></div></section>
 </main>
-<div class="modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
-  <div class="modal-box">
-    <div class="modal-header">
-      <h2 id="authTitle">تسجيل الدخول</h2>
-      <button class="close-btn" data-close="authModal" aria-label="إغلاق">×</button>
-    </div>
 
+<div class="modal" id="authModal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-header"><h2 id="authTitle">تسجيل الدخول</h2><button class="close-btn" data-close="authModal">×</button></div>
     <div id="loginPanel">
       <form id="authForm" class="form-grid">
-        <label>البريد الإلكتروني
-          <input id="authEmail" type="email" autocomplete="email" required maxlength="160">
-        </label>
-        <label>كلمة المرور
-          <input id="authPassword" type="password" autocomplete="current-password" required maxlength="128">
-        </label>
+        <label>البريد الإلكتروني<input id="authEmail" type="email" required maxlength="160"></label>
+        <label>كلمة المرور<input id="authPassword" type="password" required maxlength="128"></label>
         <button class="btn btn-primary" type="submit">تسجيل الدخول</button>
         <button class="btn" id="showRegisterBtn" type="button">إنشاء حساب جديد</button>
         <button class="btn" id="showResetBtn" type="button">نسيت كلمة المرور؟</button>
-        <p id="authMessage" class="notice" role="status"></p>
+        <p id="authMessage" class="notice"></p>
       </form>
     </div>
-
     <div id="registerPanel" hidden>
       <form id="registerForm" class="form-grid">
-        <label>اسم المستخدم
-          <input id="registerName" type="text" autocomplete="nickname" required minlength="2" maxlength="40" placeholder="الاسم الذي سيظهر للآخرين">
-        </label>
-        <label>البريد الإلكتروني
-          <input id="registerEmail" type="email" autocomplete="email" required maxlength="160">
-        </label>
-        <label>كلمة المرور
-          <input id="registerPassword" type="password" autocomplete="new-password" required minlength="6" maxlength="128">
-        </label>
-        <label>تأكيد كلمة المرور
-          <input id="registerPasswordConfirm" type="password" autocomplete="new-password" required minlength="6" maxlength="128">
-        </label>
+        <label>اسم المستخدم<input id="registerName" type="text" required minlength="2" maxlength="40" placeholder="الاسم الذي سيظهر للآخرين"></label>
+        <label>البريد الإلكتروني<input id="registerEmail" type="email" required maxlength="160"></label>
+        <label>كلمة المرور<input id="registerPassword" type="password" required minlength="6" maxlength="128"></label>
+        <label>تأكيد كلمة المرور<input id="registerPasswordConfirm" type="password" required minlength="6" maxlength="128"></label>
         <button class="btn btn-primary" type="submit">إنشاء الحساب</button>
         <button class="btn" id="backToLoginFromRegister" type="button">لدي حساب بالفعل — تسجيل الدخول</button>
-        <p id="registerMessage" class="notice" role="status"></p>
+        <p id="registerMessage" class="notice"></p>
       </form>
     </div>
-
     <div id="resetPanel" hidden>
       <form id="resetForm" class="form-grid">
-        <p class="notice">أدخل البريد الإلكتروني المرتبط بحسابك، وسنرسل لك رابط إعادة تعيين كلمة المرور.</p>
-        <label>البريد الإلكتروني
-          <input id="resetEmail" type="email" autocomplete="email" required maxlength="160">
-        </label>
+        <p class="notice">أدخل البريد الإلكتروني وسنرسل لك رابط إعادة التعيين.</p>
+        <label>البريد الإلكتروني<input id="resetEmail" type="email" required maxlength="160"></label>
         <button class="btn btn-primary" type="submit">إرسال رابط الاستعادة</button>
         <button class="btn" id="backToLoginFromReset" type="button">العودة إلى تسجيل الدخول</button>
-        <p id="resetMessage" class="notice" role="status"></p>
+        <p id="resetMessage" class="notice"></p>
       </form>
     </div>
   </div>
 </div>
 
-<div class="modal" id="adModal" role="dialog" aria-modal="true" aria-labelledby="adFormTitle">
+<div class="modal" id="adModal">
   <div class="modal-box">
-    <div class="modal-header"><h2 id="adFormTitle">انشر إعلانك</h2><button class="close-btn" data-close="adModal" aria-label="إغلاق">×</button></div>
+    <div class="modal-header"><h2>انشر إعلانك</h2><button class="close-btn" data-close="adModal">×</button></div>
     <form id="adForm" class="form-grid">
-      <label>عنوان الإعلان<input id="adTitle" required minlength="3" maxlength="100" placeholder="مثلاً: هاتف سامسونج مستعمل"></label>
-      <label>وصف الإعلان<textarea id="adDescription" required minlength="10" maxlength="2000" placeholder="اكتب تفاصيل المنتج أو الخدمة"></textarea></label>
-      <label>القسم
-        <select id="adCategory" required>
-          <option value="">اختر القسم</option><option>إلكترونيات</option><option>سيارات</option><option>عقارات</option>
-          <option>أثاث</option><option>ملابس</option><option>خدمات</option><option>وظائف</option><option>أخرى</option>
-        </select>
-      </label>
-      <label>المدينة
-        <select id="adCity" required>
-          <option value="">اختر المدينة</option><option>الخرطوم</option><option>أم درمان</option><option>بحري</option>
-          <option>بورتسودان</option><option>كسلا</option><option>مدني</option><option>عطبرة</option><option>الأبيض</option><option>نيالا</option><option>أخرى</option>
-        </select>
-      </label>
-      <label>السعر
-        <select id="priceType"><option value="fixed">سعر محدد بالجنيه السوداني</option><option value="contact">السعر عند التواصل</option></select>
-      </label>
-      <label id="priceLabel">السعر بالجنيه السوداني<input id="adPrice" type="number" min="0" step="1" placeholder="مثلاً: 150000"></label>
-      <label>رقم الهاتف للتواصل<input id="adPhone" type="tel" inputmode="tel" required maxlength="20" placeholder="رقم سوداني أو دولي"></label>
-      <p class="notice">رقم الهاتف سيظهر للزوار في إعلانك. أدخل الرقم مع مفتاح الدولة لتسهيل التواصل عبر واتساب.</p>
+      <label>عنوان الإعلان<input id="adTitle" required minlength="3" maxlength="100"></label>
+      <label>وصف الإعلان<textarea id="adDescription" required minlength="10" maxlength="2000"></textarea></label>
+      <label>القسم<select id="adCategory" required><option value="">اختر القسم</option><option>إلكترونيات</option><option>سيارات</option><option>عقارات</option><option>أثاث</option><option>ملابس</option><option>خدمات</option><option>وظائف</option><option>أخرى</option></select></label>
+      <label>المدينة<select id="adCity" required><option value="">اختر المدينة</option><option>الخرطوم</option><option>أم درمان</option><option>بحري</option><option>بورتسودان</option><option>كسلا</option><option>مدني</option><option>عطبرة</option><option>الأبيض</option><option>نيالا</option><option>أخرى</option></select></label>
+      <label>السعر<select id="priceType"><option value="fixed">سعر محدد</option><option value="contact">السعر عند التواصل</option></select></label>
+      <label id="priceLabel">السعر بالجنيه<input id="adPrice" type="number" min="0" step="1"></label>
+      <label>رقم الهاتف<input id="adPhone" type="tel" required maxlength="20" placeholder="مثال: 2499xxxxxxx"></label>
       <button class="btn btn-primary" id="publishBtn" type="submit">نشر الإعلان</button>
-      <p id="adMessage" class="notice" role="status"></p>
+      <p id="adMessage" class="notice"></p>
     </form>
   </div>
 </div>
@@ -238,253 +134,149 @@ const firebaseConfig = {
   projectId: "souqe-a9571",
   storageBucket: "souqe-a9571.firebasestorage.app",
   messagingSenderId: "22811824195",
-  appId: "1:781789889533:web:88c1106bb3d8ad1cb904f6",
-  measurementId: "G-KPSVJGJ4Z0"
+  appId: "1:781789889533:web:88c1106bb3d8ad1cb904f6"
 };
-
-const adsGrid = document.getElementById("adsGrid");
-const authModal = document.getElementById("authModal");
-const adModal = document.getElementById("adModal");
-let auth, db, currentUser = null, allAds = [], selectedCategory = "";
-let firebaseReady = false;
-
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, ch => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  })[ch]);
+const adsGrid=document.getElementById("adsGrid");
+let auth,db,currentUser=null,allAds=[],selectedCategory="",firebaseReady=false;
+function escapeHTML(v){return String(v??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]))}
+function showModal(id){document.getElementById(id).classList.add("open")}
+function closeModal(id){document.getElementById(id).classList.remove("open")}
+function setMessage(id,msg,err=false){const el=document.getElementById(id);el.textContent=msg;el.classList.toggle("error",err)}
+function showAuthPanel(panel){
+  document.getElementById("loginPanel").hidden=panel!=="login";
+  document.getElementById("registerPanel").hidden=panel!=="register";
+  document.getElementById("resetPanel").hidden=panel!=="reset";
+  document.getElementById("authTitle").textContent=panel==="register"?"إنشاء حساب جديد":panel==="reset"?"استعادة كلمة المرور":"تسجيل الدخول";
 }
-function showModal(id) { document.getElementById(id).classList.add("open"); }
-function closeModal(id) { document.getElementById(id).classList.remove("open"); }
-function setMessage(id, message, error=false) {
-  const el = document.getElementById(id);
-  el.textContent = message;
-  el.classList.toggle("error", error);
+function formatPrice(ad){
+  if(ad.priceType==="contact"||ad.price===null||ad.price==="") return "السعر عند التواصل";
+  const n=Number(ad.price); return Number.isFinite(n)&&n>=0?n.toLocaleString("ar")+" جنيه سوداني":"السعر عند التواصل";
 }
-function formatPrice(ad) {
-  if (ad.priceType === "contact" || ad.price === null || ad.price === undefined || ad.price === "") {
-    return "السعر عند التواصل";
-  }
-  const n = Number(ad.price);
-  return Number.isFinite(n) && n >= 0 ? n.toLocaleString("ar") + " جنيه سوداني" : "السعر عند التواصل";
-}
-function normalizePhone(value) {
-  return String(value || "").replace(/[^\d]/g, "");
-}
-function validPhone(value) {
-  const digits = normalizePhone(value);
-  return digits.length >= 9 && digits.length <= 15;
-}
-function renderAds() {
-  const query = document.getElementById("searchInput").value.trim().toLocaleLowerCase();
-  const city = document.getElementById("cityFilter").value;
-  const category = selectedCategory || document.getElementById("categoryFilter").value;
-  const filtered = allAds.filter(ad => {
-    const text = `${ad.title || ""} ${ad.description || ""}`.toLocaleLowerCase();
-    return (!query || text.includes(query)) &&
-      (!city || ad.city === city) &&
-      (!category || ad.category === category);
+function normalizePhone(v){return String(v||"").replace(/[^\d]/g,"")}
+function validPhone(v){const d=normalizePhone(v);return d.length>=9&&d.length<=15}
+function renderAds(){
+  const query=document.getElementById("searchInput").value.trim().toLocaleLowerCase();
+  const city=document.getElementById("cityFilter").value;
+  const category=selectedCategory||document.getElementById("categoryFilter").value;
+  const filtered=allAds.filter(ad=>{
+    const text=`${ad.title||""} ${ad.description||""}`.toLocaleLowerCase();
+    return (!query||text.includes(query))&&(!city||ad.city===city)&&(!category||ad.category===category);
   });
-
-  document.getElementById("resultsCount").textContent = `عدد الإعلانات: ${filtered.length}`;
-  if (!filtered.length) {
-    adsGrid.innerHTML = '<div class="empty-state"><div style="font-size:40px">🛍️</div><h3>ما لقينا إعلانات مطابقة</h3><p>جرّب تغيّر كلمات البحث أو التصفية، أو ارجع لاحقاً.</p></div>';
-    return;
-  }
-
-  adsGrid.innerHTML = filtered.map(ad => {
-    const title = escapeHTML(ad.title || "إعلان");
-    const phone = normalizePhone(ad.phone);
-    const waLink = phone ? `https://wa.me/${phone}` : "";
-    const telLink = phone ? `tel:${phone}` : "";
-    return `<article class="ad-card">
-      <span class="ad-category">${escapeHTML(ad.category || "أخرى")}</span>
-      <h3 class="ad-title">${title}</h3>
-      <p class="ad-description">${escapeHTML(ad.description || "لا يوجد وصف.")}</p>
-      <div class="ad-price">${formatPrice(ad)}</div>
-      <div class="ad-meta">📍 ${escapeHTML(ad.city || "السودان")}</div>
-      <div class="ad-meta">رقم التواصل: ${escapeHTML(ad.phone || "غير متوفر")}</div>
-      <div class="actions">
-        ${phone ? `<a class="btn btn-primary" href="${escapeHTML(telLink)}">اتصال</a><a class="btn whatsapp" href="${escapeHTML(waLink)}" target="_blank" rel="noopener noreferrer">واتساب</a>` : ""}
-      </div>
-    </article>`;
+  document.getElementById("resultsCount").textContent=`عدد الإعلانات: ${filtered.length}`;
+  if(!filtered.length){adsGrid.innerHTML='<div class="empty-state">🛍️<h3>ما لقينا إعلانات</h3></div>';return}
+  adsGrid.innerHTML=filtered.map(ad=>{
+    const phone=normalizePhone(ad.phone);
+    const wa=phone?`https://wa.me/${phone}`:""; const tel=phone?`tel:${phone}`:"";
+    return `<article class="ad-card"><span class="ad-category">${escapeHTML(ad.category)}</span><h3 class="ad-title">${escapeHTML(ad.title)}</h3><p class="ad-description">${escapeHTML(ad.description)}</p><div class="ad-price">${formatPrice(ad)}</div><div class="ad-meta">📍 ${escapeHTML(ad.city)} - ${escapeHTML(ad.phone)}</div><div class="actions">${phone?`<a class="btn btn-primary" href="${escapeHTML(tel)}">اتصال</a><a class="btn whatsapp" href="${escapeHTML(wa)}" target="_blank">واتساب</a>`:""}</div></article>`;
   }).join("");
 }
-
-function initFirebase() {
-  try {
-    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-    auth = firebase.auth();
-    db = firebase.firestore();
-    firebaseReady = true;
-
-    auth.onAuthStateChanged(user => {
-      currentUser = user;
-      document.getElementById("loginBtn").hidden = !!user;
-      document.getElementById("logoutBtn").hidden = !user;
-      document.getElementById("userStatus").textContent = user ? "حسابك نشط" : "";
-    });
-
-    // القواعد الأمنية تسمح للزوار بقراءة الإعلانات النشطة فقط.
-    db.collection("ads").where("status", "==", "active")
-      .onSnapshot(snapshot => {
-        allAds = snapshot.docs.map(doc => ({id:doc.id, ...doc.data()}));
-        allAds.sort((a,b) => {
-          const ta = a.createdAt?.toMillis?.() || 0;
-          const tb = b.createdAt?.toMillis?.() || 0;
-          return tb - ta;
-        });
-        renderAds();
-      }, error => {
-        console.error("Firestore read error:", error);
-        adsGrid.innerHTML = '<div class="message error">تعذر تحميل الإعلانات. قد تحتاج قواعد Firestore إلى مراجعة.</div>';
-        document.getElementById("resultsCount").textContent = "تعذر تحميل البيانات";
-      });
-  } catch (error) {
-    console.error(error);
-    adsGrid.innerHTML = '<div class="message error">تعذر تهيئة Firebase. راجع إعدادات المشروع.</div>';
-  }
+function authError(code){
+  const e={"auth/email-already-in-use":"البريد مسجل بالفعل","auth/invalid-email":"صيغة البريد غير صحيحة","auth/weak-password":"كلمة المرور ضعيفة","auth/invalid-credential":"البريد أو كلمة المرور غير صحيحة","auth/user-not-found":"لا يوجد حساب","auth/wrong-password":"كلمة المرور غير صحيحة","auth/too-many-requests":"محاولات كثيرة، انتظر","auth/network-request-failed":"تحقق من الإنترنت"}; return e[code]||code;
 }
-
-document.getElementById("loginBtn").addEventListener("click", () => {
-  setMessage("authMessage", "");
-  showModal("authModal");
-});
-document.getElementById("logoutBtn").addEventListener("click", async () => {
-  try { await auth.signOut(); alert("تم تسجيل الخروج."); }
-  catch (e) { alert("تعذر تسجيل الخروج: " + e.message); }
-});
-document.getElementById("addAdBtn").addEventListener("click", () => {
-  if (!firebaseReady) return alert("Firebase لم يجهز بعد. حدّث الصفحة وجرب مرة أخرى.");
-  if (!currentUser) {
-    setMessage("authMessage", "سجّل الدخول أولاً حتى تتمكن من نشر إعلان.");
-    showModal("authModal");
-    return;
-  }
-  setMessage("adMessage", "");
-  showModal("adModal");
-});
-document.querySelectorAll("[data-close]").forEach(btn => {
-  btn.addEventListener("click", () => closeModal(btn.dataset.close));
-});
-document.querySelectorAll(".modal").forEach(modal => {
-  modal.addEventListener("click", e => {
-    if (e.target === modal) closeModal(modal.id);
-  });
-});
-document.getElementById("priceType").addEventListener("change", e => {
-  const fixed = e.target.value === "fixed";
-  document.getElementById("priceLabel").hidden = !fixed;
-  document.getElementById("adPrice").required = fixed;
-});
-document.getElementById("registerBtn").addEventListener("click", async () => {
-  if (!firebaseReady) return setMessage("authMessage", "Firebase غير جاهز.", true);
-  const email = document.getElementById("authEmail").value.trim();
-  const password = document.getElementById("authPassword").value;
-  if (!email || password.length < 6) return setMessage("authMessage", "أدخل البريد وكلمة مرور من 6 أحرف على الأقل.", true);
-  try {
-    await auth.createUserWithEmailAndPassword(email, password);
-    setMessage("authMessage", "تم إنشاء الحساب وتسجيل الدخول.");
-    closeModal("authModal");
-  } catch (e) {
-    setMessage("authMessage", authError(e.code), true);
-  }
-});
-document.getElementById("authForm").addEventListener("submit", async e => {
-  e.preventDefault();
-  if (!firebaseReady) return setMessage("authMessage", "Firebase غير جاهز.", true);
-  const email = document.getElementById("authEmail").value.trim();
-  const password = document.getElementById("authPassword").value;
-  try {
-    await auth.signInWithEmailAndPassword(email, password);
-    closeModal("authModal");
-    setMessage("authMessage", "");
-  } catch (err) {
-    setMessage("authMessage", authError(err.code), true);
-  }
-});
-document.getElementById("resetPasswordBtn").addEventListener("click", async () => {
-  const email = document.getElementById("authEmail").value.trim();
-  if (!email) return setMessage("authMessage", "اكتب بريدك الإلكتروني أولاً.", true);
-  try {
-    await auth.sendPasswordResetEmail(email);
-    setMessage("authMessage", "إذا كان البريد مسجلاً، ستصلك رسالة لإعادة تعيين كلمة المرور.");
-  } catch (e) {
-    setMessage("authMessage", authError(e.code), true);
-  }
-});
-function authError(code) {
-  const errors = {
-    "auth/email-already-in-use":"هذا البريد مسجل بالفعل. جرّب تسجيل الدخول.",
-    "auth/invalid-email":"صيغة البريد الإلكتروني غير صحيحة.",
-    "auth/weak-password":"كلمة المرور ضعيفة؛ استخدم 6 أحرف على الأقل.",
-    "auth/invalid-credential":"البريد أو كلمة المرور غير صحيحة.",
-    "auth/user-not-found":"لا يوجد حساب بهذا البريد.",
-    "auth/wrong-password":"كلمة المرور غير صحيحة.",
-    "auth/too-many-requests":"محاولات كثيرة. انتظر قليلاً ثم حاول مجدداً.",
-    "auth/network-request-failed":"تحقق من اتصال الإنترنت."
-  };
-  return errors[code] || "حدث خطأ. حاول مرة أخرى، وإذا استمر أرسل لي نص الخطأ.";
-}
-document.getElementById("adForm").addEventListener("submit", async e => {
-  e.preventDefault();
-  if (!currentUser) return setMessage("adMessage", "يجب تسجيل الدخول أولاً.", true);
-
-  const title = document.getElementById("adTitle").value.trim();
-  const description = document.getElementById("adDescription").value.trim();
-  const category = document.getElementById("adCategory").value;
-  const city = document.getElementById("adCity").value;
-  const phone = document.getElementById("adPhone").value.trim();
-  const priceType = document.getElementById("priceType").value;
-  const rawPrice = document.getElementById("adPrice").value;
-  const price = priceType === "contact" ? null : Number(rawPrice);
-
-  if (title.length < 3 || description.length < 10) return setMessage("adMessage", "العنوان أو الوصف قصير جداً.", true);
-  if (!validPhone(phone)) return setMessage("adMessage", "أدخل رقم هاتف صحيحاً مع مفتاح الدولة.", true);
-  if (priceType === "fixed" && (!rawPrice || !Number.isFinite(price) || price < 0)) {
-    return setMessage("adMessage", "أدخل سعراً صحيحاً أو اختر السعر عند التواصل.", true);
-  }
-
-  const button = document.getElementById("publishBtn");
-  button.disabled = true;
-  button.textContent = "جاري النشر...";
-  try {
-    await db.collection("ads").add({
-      title, description, category, city, phone,
-      price: priceType === "contact" ? 0 : price,
-      priceType,
-      status: "active",
-      ownerUid: currentUser.uid,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+function initFirebase(){
+  try{
+    if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    auth=firebase.auth(); db=firebase.firestore(); firebaseReady=true;
+    auth.onAuthStateChanged(user=>{
+      currentUser=user;
+      document.getElementById("loginBtn").hidden=!!user;
+      document.getElementById("logoutBtn").hidden=!user;
+      document.getElementById("userStatus").textContent=user? (user.emailVerified? "حسابك نشط - "+(user.displayName||user.email) : "يرجى تأكيد البريد - تفقد إيميلك") : "";
     });
-    document.getElementById("adForm").reset();
-    document.getElementById("priceLabel").hidden = false;
-    document.getElementById("adPrice").required = true;
-    closeModal("adModal");
-    document.getElementById("listings").scrollIntoView({behavior:"smooth"});
-    alert("تم إرسال الإعلان. إذا لم يظهر، فقد تحتاج قواعد Firestore إلى السماح بحقول الإعلان الجديدة.");
-  } catch (error) {
-    console.error("Firestore write error:", error);
-    setMessage("adMessage", "لم يُنشر الإعلان. قد تكون قواعد Firestore لا تسمح بحقل الهاتف أو السعر أو بيانات الإعلان. أرسل لي نص الخطأ لنضبط القواعد بأمان.", true);
-  } finally {
-    button.disabled = false;
-    button.textContent = "نشر الإعلان";
-  }
+    db.collection("ads").where("status","==","active").onSnapshot(snap=>{
+      allAds=snap.docs.map(d=>({id:d.id,...d.data()}));
+      allAds.sort((a,b)=> (b.createdAt?.toMillis?.()||0) - (a.createdAt?.toMillis?.()||0) );
+      renderAds();
+    },err=>{
+      adsGrid.innerHTML='<div class="message error">تعذر تحميل الإعلانات - راجع قواعد Firestore</div>';
+    });
+  }catch(e){adsGrid.innerHTML='<div class="message error">تعذر تهيئة Firebase</div>'}
+}
+document.getElementById("loginBtn").addEventListener("click",()=>{setMessage("authMessage","");showAuthPanel("login");showModal("authModal")});
+document.getElementById("logoutBtn").addEventListener("click",async()=>{await auth.signOut()});
+document.getElementById("addAdBtn").addEventListener("click",()=>{
+  if(!firebaseReady) return alert("Firebase لم يجهز");
+  if(!currentUser){setMessage("authMessage","سجل دخول أولاً");showAuthPanel("login");showModal("authModal");return}
+  if(!currentUser.emailVerified){alert("رجاء أكد بريدك الإلكتروني أولاً. رسلنا ليك رابط، تفقد صندوق الوارد."); currentUser.sendEmailVerification(); return}
+  setMessage("adMessage",""); showModal("adModal");
 });
-document.getElementById("searchBtn").addEventListener("click", renderAds);
-document.getElementById("searchInput").addEventListener("input", renderAds);
-document.getElementById("categoryFilter").addEventListener("change", () => {
-  selectedCategory = "";
-  document.querySelectorAll(".category-card").forEach(b => b.classList.toggle("active", b.dataset.category === ""));
-  renderAds();
+document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",()=>closeModal(b.dataset.close)));
+document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m) closeModal(m.id)}));
+document.getElementById("priceType").addEventListener("change",e=>{
+  const fixed=e.target.value==="fixed"; document.getElementById("priceLabel").hidden=!fixed; document.getElementById("adPrice").required=fixed;
 });
-document.getElementById("cityFilter").addEventListener("change", renderAds);
-document.querySelectorAll(".category-card").forEach(button => {
-  button.addEventListener("click", () => {
-    selectedCategory = button.dataset.category;
-    document.getElementById("categoryFilter").value = selectedCategory;
-    document.querySelectorAll(".category-card").forEach(b => b.classList.toggle("active", b === button));
+document.getElementById("showRegisterBtn").addEventListener("click",()=>showAuthPanel("register"));
+document.getElementById("showResetBtn").addEventListener("click",()=>showAuthPanel("reset"));
+document.getElementById("backToLoginFromRegister").addEventListener("click",()=>showAuthPanel("login"));
+document.getElementById("backToLoginFromReset").addEventListener("click",()=>showAuthPanel("login"));
+
+document.getElementById("authForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const email=document.getElementById("authEmail").value.trim();
+  const pass=document.getElementById("authPassword").value;
+  try{
+    const cred=await auth.signInWithEmailAndPassword(email,pass);
+    if(!cred.user.emailVerified){ setMessage("authMessage","بريدك غير مؤكد. أرسلنا رابط تأكيد، تفقد إيميلك.",true); await cred.user.sendEmailVerification(); return}
+    closeModal("authModal");
+  }catch(err){ setMessage("authMessage",authError(err.code),true)}
+});
+
+document.getElementById("registerForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const name=document.getElementById("registerName").value.trim();
+  const email=document.getElementById("registerEmail").value.trim();
+  const pass=document.getElementById("registerPassword").value;
+  const confirm=document.getElementById("registerPasswordConfirm").value;
+  if(name.length<2) return setMessage("registerMessage","اكتب اسمك",true);
+  if(pass!==confirm) return setMessage("registerMessage","كلمتا المرور غير متطابقتين",true);
+  try{
+    const cred=await auth.createUserWithEmailAndPassword(email,pass);
+    await cred.user.updateProfile({displayName:name});
+    await cred.user.sendEmailVerification();
+    setMessage("registerMessage","تم إنشاء الحساب! أرسلنا لك رابط تأكيد على بريدك، أكد ثم سجل الدخول.",false);
+    setTimeout(()=>showAuthPanel("login"),2000);
+  }catch(err){ setMessage("registerMessage",authError(err.code),true)}
+});
+
+document.getElementById("resetForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const email=document.getElementById("resetEmail").value.trim();
+  try{ await auth.sendPasswordResetEmail(email); setMessage("resetMessage","إذا كان البريد مسجلاً، ستصلك رسالة استعادة."); }
+  catch(err){ setMessage("resetMessage",authError(err.code),true)}
+});
+
+document.getElementById("adForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  if(!currentUser||!currentUser.emailVerified) return setMessage("adMessage","أكد بريدك أولاً",true);
+  const title=document.getElementById("adTitle").value.trim();
+  const description=document.getElementById("adDescription").value.trim();
+  const category=document.getElementById("adCategory").value;
+  const city=document.getElementById("adCity").value;
+  const phone=document.getElementById("adPhone").value.trim();
+  const priceType=document.getElementById("priceType").value;
+  const rawPrice=document.getElementById("adPrice").value;
+  const price=priceType==="contact"?0:Number(rawPrice);
+  if(title.length<3||description.length<10) return setMessage("adMessage","العنوان أو الوصف قصير",true);
+  if(!validPhone(phone)) return setMessage("adMessage","رقم الهاتف غير صحيح",true);
+  if(priceType==="fixed"&&(!rawPrice||!Number.isFinite(price)||price<0)) return setMessage("adMessage","أدخل سعر صحيح",true);
+  const btn=document.getElementById("publishBtn"); btn.disabled=true; btn.textContent="جاري النشر...";
+  try{
+    await db.collection("ads").add({title,description,category,city,phone,price,priceType,status:"active",ownerUid:currentUser.uid,ownerName:currentUser.displayName||"",createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+    document.getElementById("adForm").reset(); closeModal("adModal"); document.getElementById("listings").scrollIntoView({behavior:"smooth"});
+  }catch(err){ setMessage("adMessage","فشل النشر: "+err.message,true)}
+  finally{ btn.disabled=false; btn.textContent="نشر الإعلان"}
+});
+
+document.getElementById("searchBtn").addEventListener("click",renderAds);
+document.getElementById("searchInput").addEventListener("input",renderAds);
+document.getElementById("categoryFilter").addEventListener("change",()=>{selectedCategory="";document.querySelectorAll(".category-card").forEach(b=>b.classList.toggle("active",b.dataset.category===""));renderAds()});
+document.getElementById("cityFilter").addEventListener("change",renderAds);
+document.querySelectorAll(".category-card").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    selectedCategory=btn.dataset.category;
+    document.getElementById("categoryFilter").value=selectedCategory;
+    document.querySelectorAll(".category-card").forEach(b=>b.classList.toggle("active",b===btn));
     renderAds();
-    document.getElementById("listings").scrollIntoView({behavior:"smooth"});
   });
 });
 initFirebase();
