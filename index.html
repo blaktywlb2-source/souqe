@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0b110e">
 <title>سوقي | SOUQI</title>
+<!-- لوقو سوقي - Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="souqi-favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="souqi-favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="souqi-logo-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="souqi-logo-180-apple.png">
+<link rel="icon" type="image/png" sizes="512x512" href="souqi-logo-512.png">
 <style>
 :root{--bg:#0b110e;--card:#121b16;--card2:#1a281f;--green:#b8e0a5;--green2:#6eb47a;--gold:#e2c17b;--text:#f4f5ef;--muted:#aab6aa;--border:#2a3a30}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.7}
@@ -12,9 +18,8 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.container{width
 .topbar{position:sticky;top:0;z-index:10;background:#0b110ef2;border-bottom:1px solid var(--border)}
 .navbar{min-height:72px;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .brand{display:flex;align-items:center;gap:12px;color:var(--text);text-decoration:none}
-.brand-icon{width:54px;height:54px;display:grid;place-items:center;border-radius:16px;background:radial-gradient(100% 100% at 30% 20%, #fff 0%, #d5e9bd 40%, #1a4d2e 100%);border:2px solid #e2c17b;box-shadow:0 0 0 3px #1a3a28, 0 6px 20px #0008;position:relative;overflow:hidden}
-.brand-icon svg{width:100%;height:100%}
-.brand-icon::after{content:"";position:absolute;inset:0;border-radius:16px;box-shadow:inset 0 1px 1px #fff8}
+.brand-icon{width:58px;height:58px;border-radius:16px;background:#000;border:2px solid #e2c17b;box-shadow:0 0 0 3px #1a3a28, 0 6px 20px #0008;overflow:hidden;display:grid;place-items:center}
+.brand-icon img{width:100%;height:100%;object-fit:cover;display:block}
 .brand-name{font-size:24px;font-weight:900;letter-spacing:.3px}.brand-name span{color:var(--gold)}.brand-sub{color:var(--muted);font-size:10px;letter-spacing:2.5px}
 .nav-actions,.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .btn{border:1px solid var(--border);border-radius:12px;padding:10px 14px;background:var(--card2);color:var(--text);font-weight:bold}
@@ -44,16 +49,7 @@ footer{margin-top:70px;padding:28px 0;border-top:1px solid var(--border);text-al
   <div class="container navbar">
     <a href="#" class="brand">
       <div class="brand-icon">
-        <!-- لوقو سوداني حديث: علم السودان + حرف س مزخرف -->
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e2c17b"/><stop offset="100%" stop-color="#6eb47a"/></linearGradient></defs>
-          <rect x="2" y="2" width="96" height="96" rx="16" fill="#0b110e"/>
-          <path d="M2 2 L2 98 L32 50 Z" fill="#007229"/>
-          <rect x="32" y="2" width="66" height="31" fill="#D21034"/>
-          <rect x="32" y="34.5" width="66" height="31" fill="#fff"/>
-          <rect x="32" y="66" width="66" height="30" fill="#000"/>
-          <text x="64" y="68" text-anchor="middle" font-family="Tahoma" font-weight="900" font-size="42" fill="url(#g)" style="text-shadow:0 2px 0 #000">س</text>
-        </svg>
+        <img src="souqi-logo-512.png" alt="سوقي Souqe Logo">
       </div>
       <div><div class="brand-name">سوق<span>ي</span></div><div class="brand-sub">SOUQI · SUDAN</div></div>
     </a>
