@@ -142,19 +142,59 @@ select,input,textarea{background:var(--card);border:1px solid var(--border);bord
     <div id="adsGrid" class="ads-grid"><div class="empty-state">جاري تحميل الإعلانات...</div></div>
   </section>
 </main>
-
 <div class="modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
   <div class="modal-box">
-    <div class="modal-header"><h2 id="authTitle">دخول / حساب جديد</h2><button class="close-btn" data-close="authModal" aria-label="إغلاق">×</button></div>
-    <form id="authForm" class="form-grid">
-      <label>البريد الإلكتروني<input id="authEmail" type="email" autocomplete="email" required maxlength="160"></label>
-      <label>كلمة المرور<input id="authPassword" type="password" autocomplete="current-password" minlength="6" required maxlength="128"></label>
-      <button class="btn btn-primary" id="authSubmit" type="submit">تسجيل الدخول</button>
-      <button class="btn" id="registerBtn" type="button">إنشاء حساب جديد</button>
-      <button class="btn" id="resetPasswordBtn" type="button">نسيت كلمة المرور؟</button>
-      <p class="notice">كلمة المرور لا تُعرض للآخرين. استخدم بريداً إلكترونياً يمكنك الوصول إليه.</p>
-      <p id="authMessage" class="notice" role="status"></p>
-    </form>
+    <div class="modal-header">
+      <h2 id="authTitle">تسجيل الدخول</h2>
+      <button class="close-btn" data-close="authModal" aria-label="إغلاق">×</button>
+    </div>
+
+    <div id="loginPanel">
+      <form id="authForm" class="form-grid">
+        <label>البريد الإلكتروني
+          <input id="authEmail" type="email" autocomplete="email" required maxlength="160">
+        </label>
+        <label>كلمة المرور
+          <input id="authPassword" type="password" autocomplete="current-password" required maxlength="128">
+        </label>
+        <button class="btn btn-primary" type="submit">تسجيل الدخول</button>
+        <button class="btn" id="showRegisterBtn" type="button">إنشاء حساب جديد</button>
+        <button class="btn" id="showResetBtn" type="button">نسيت كلمة المرور؟</button>
+        <p id="authMessage" class="notice" role="status"></p>
+      </form>
+    </div>
+
+    <div id="registerPanel" hidden>
+      <form id="registerForm" class="form-grid">
+        <label>اسم المستخدم
+          <input id="registerName" type="text" autocomplete="nickname" required minlength="2" maxlength="40" placeholder="الاسم الذي سيظهر للآخرين">
+        </label>
+        <label>البريد الإلكتروني
+          <input id="registerEmail" type="email" autocomplete="email" required maxlength="160">
+        </label>
+        <label>كلمة المرور
+          <input id="registerPassword" type="password" autocomplete="new-password" required minlength="6" maxlength="128">
+        </label>
+        <label>تأكيد كلمة المرور
+          <input id="registerPasswordConfirm" type="password" autocomplete="new-password" required minlength="6" maxlength="128">
+        </label>
+        <button class="btn btn-primary" type="submit">إنشاء الحساب</button>
+        <button class="btn" id="backToLoginFromRegister" type="button">لدي حساب بالفعل — تسجيل الدخول</button>
+        <p id="registerMessage" class="notice" role="status"></p>
+      </form>
+    </div>
+
+    <div id="resetPanel" hidden>
+      <form id="resetForm" class="form-grid">
+        <p class="notice">أدخل البريد الإلكتروني المرتبط بحسابك، وسنرسل لك رابط إعادة تعيين كلمة المرور.</p>
+        <label>البريد الإلكتروني
+          <input id="resetEmail" type="email" autocomplete="email" required maxlength="160">
+        </label>
+        <button class="btn btn-primary" type="submit">إرسال رابط الاستعادة</button>
+        <button class="btn" id="backToLoginFromReset" type="button">العودة إلى تسجيل الدخول</button>
+        <p id="resetMessage" class="notice" role="status"></p>
+      </form>
+    </div>
   </div>
 </div>
 
