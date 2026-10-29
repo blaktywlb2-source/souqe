@@ -129,12 +129,13 @@ section{margin:35px 0}.heading{margin-bottom:16px}.heading h2{margin:0;font-size
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 const firebaseConfig = {
-  apiKey: "AIzaSyAkOHkYW24g_VkmxY4oakCT2wiaMGcKns",
+  apiKey: "AIzaSyAkOHkYW24g_VkmxqY4oakCT2wiaMGcKns",
   authDomain: "souqe-a9571.firebaseapp.com",
   projectId: "souqe-a9571",
   storageBucket: "souqe-a9571.firebasestorage.app",
   messagingSenderId: "22811824195",
-  appId: "1:781789889533:web:88c1106bb3d8ad1cb904f6"
+  appId: "1:22811824195:web:868b299d4e49be8bb904f6",
+  measurementId: "G-ENB7MYTNFQ"
 };
 const adsGrid=document.getElementById("adsGrid");
 let auth,db,currentUser=null,allAds=[],selectedCategory="",firebaseReady=false;
@@ -171,7 +172,7 @@ function renderAds(){
   }).join("");
 }
 function authError(code){
-  const e={"auth/email-already-in-use":"البريد مسجل بالفعل","auth/invalid-email":"صيغة البريد غير صحيحة","auth/weak-password":"كلمة المرور ضعيفة","auth/invalid-credential":"البريد أو كلمة المرور غير صحيحة","auth/user-not-found":"لا يوجد حساب","auth/wrong-password":"كلمة المرور غير صحيحة","auth/too-many-requests":"محاولات كثيرة، انتظر","auth/network-request-failed":"تحقق من الإنترنت"}; return e[code]||code;
+  const e={"auth/email-already-in-use":"البريد مسجل بالفعل","auth/invalid-email":"صيغة البريد غير صحيحة","auth/weak-password":"كلمة المرور ضعيفة","auth/invalid-credential":"البريد أو كلمة المرور غير صحيحة","auth/user-not-found":"لا يوجد حساب","auth/wrong-password":"كلمة المرور غير صحيحة","auth/too-many-requests":"محاولات كثيرة، انتظر","auth/network-request-failed":"تحقق من الإنترنت","auth/api-key-not-valid":"مفتاح Firebase غير صالح - راجع Project settings"}; return e[code]||code;
 }
 function initFirebase(){
   try{
@@ -188,9 +189,10 @@ function initFirebase(){
       allAds.sort((a,b)=> (b.createdAt?.toMillis?.()||0) - (a.createdAt?.toMillis?.()||0) );
       renderAds();
     },err=>{
+      console.error(err);
       adsGrid.innerHTML='<div class="message error">تعذر تحميل الإعلانات - راجع قواعد Firestore</div>';
     });
-  }catch(e){adsGrid.innerHTML='<div class="message error">تعذر تهيئة Firebase</div>'}
+  }catch(e){console.error(e); adsGrid.innerHTML='<div class="message error">تعذر تهيئة Firebase</div>'}
 }
 document.getElementById("loginBtn").addEventListener("click",()=>{setMessage("authMessage","");showAuthPanel("login");showModal("authModal")});
 document.getElementById("logoutBtn").addEventListener("click",async()=>{await auth.signOut()});
@@ -218,7 +220,7 @@ document.getElementById("authForm").addEventListener("submit",async e=>{
     const cred=await auth.signInWithEmailAndPassword(email,pass);
     if(!cred.user.emailVerified){ setMessage("authMessage","بريدك غير مؤكد. أرسلنا رابط تأكيد، تفقد إيميلك.",true); await cred.user.sendEmailVerification(); return}
     closeModal("authModal");
-  }catch(err){ setMessage("authMessage",authError(err.code),true)}
+  }catch(err){ console.error(err); setMessage("authMessage",authError(err.code),true)}
 });
 
 document.getElementById("registerForm").addEventListener("submit",async e=>{
@@ -235,14 +237,14 @@ document.getElementById("registerForm").addEventListener("submit",async e=>{
     await cred.user.sendEmailVerification();
     setMessage("registerMessage","تم إنشاء الحساب! أرسلنا لك رابط تأكيد على بريدك، أكد ثم سجل الدخول.",false);
     setTimeout(()=>showAuthPanel("login"),2000);
-  }catch(err){ setMessage("registerMessage",authError(err.code),true)}
+  }catch(err){ console.error(err); setMessage("registerMessage",authError(err.code),true)}
 });
 
 document.getElementById("resetForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const email=document.getElementById("resetEmail").value.trim();
   try{ await auth.sendPasswordResetEmail(email); setMessage("resetMessage","إذا كان البريد مسجلاً، ستصلك رسالة استعادة."); }
-  catch(err){ setMessage("resetMessage",authError(err.code),true)}
+  catch(err){ console.error(err); setMessage("resetMessage",authError(err.code),true)}
 });
 
 document.getElementById("adForm").addEventListener("submit",async e=>{
@@ -263,7 +265,7 @@ document.getElementById("adForm").addEventListener("submit",async e=>{
   try{
     await db.collection("ads").add({title,description,category,city,phone,price,priceType,status:"active",ownerUid:currentUser.uid,ownerName:currentUser.displayName||"",createdAt:firebase.firestore.FieldValue.serverTimestamp()});
     document.getElementById("adForm").reset(); closeModal("adModal"); document.getElementById("listings").scrollIntoView({behavior:"smooth"});
-  }catch(err){ setMessage("adMessage","فشل النشر: "+err.message,true)}
+  }catch(err){ console.error(err); setMessage("adMessage","فشل النشر: "+err.message,true)}
   finally{ btn.disabled=false; btn.textContent="نشر الإعلان"}
 });
 
