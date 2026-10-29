@@ -172,7 +172,7 @@ function renderAds(){
   }).join("");
 }
 function authError(code){
-  const e={"auth/email-already-in-use":"البريد مسجل بالفعل","auth/invalid-email":"صيغة البريد غير صحيحة","auth/weak-password":"كلمة المرور ضعيفة","auth/invalid-credential":"البريد أو كلمة المرور غير صحيحة","auth/user-not-found":"لا يوجد حساب","auth/wrong-password":"كلمة المرور غير صحيحة","auth/too-many-requests":"محاولات كثيرة، انتظر","auth/network-request-failed":"تحقق من الإنترنت","auth/api-key-not-valid":"مفتاح Firebase غير صالح - راجع Project settings"}; return e[code]||code;
+  const e={"auth/email-already-in-use":"البريد مسجل بالفعل","auth/invalid-email":"صيغة البريد غير صحيحة","auth/weak-password":"كلمة المرور ضعيفة","auth/invalid-credential":"البريد أو كلمة المرور غير صحيحة","auth/user-not-found":"لا يوجد حساب","auth/wrong-password":"كلمة المرور غير صحيحة","auth/too-many-requests":"محاولات كثيرة، انتظر","auth/network-request-failed":"تحقق من الإنترنت"}; return e[code]||code;
 }
 function initFirebase(){
   try{
@@ -182,7 +182,7 @@ function initFirebase(){
       currentUser=user;
       document.getElementById("loginBtn").hidden=!!user;
       document.getElementById("logoutBtn").hidden=!user;
-      document.getElementById("userStatus").textContent=user? (user.emailVerified? "حسابك نشط - "+(user.displayName||user.email) : "يرجى تأكيد البريد - تفقد إيميلك") : "";
+      document.getElementById("userStatus").textContent=user? (user.displayName||user.email) : "";
     });
     db.collection("ads").where("status","==","active").onSnapshot(snap=>{
       allAds=snap.docs.map(d=>({id:d.id,...d.data()}));
@@ -199,7 +199,6 @@ document.getElementById("logoutBtn").addEventListener("click",async()=>{await au
 document.getElementById("addAdBtn").addEventListener("click",()=>{
   if(!firebaseReady) return alert("Firebase لم يجهز");
   if(!currentUser){setMessage("authMessage","سجل دخول أولاً");showAuthPanel("login");showModal("authModal");return}
-  if(!currentUser.emailVerified){alert("رجاء أكد بريدك الإلكتروني أولاً. رسلنا ليك رابط، تفقد صندوق الوارد."); currentUser.sendEmailVerification(); return}
   setMessage("adMessage",""); showModal("adModal");
 });
 document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",()=>closeModal(b.dataset.close)));
@@ -218,7 +217,6 @@ document.getElementById("authForm").addEventListener("submit",async e=>{
   const pass=document.getElementById("authPassword").value;
   try{
     const cred=await auth.signInWithEmailAndPassword(email,pass);
-    if(!cred.user.emailVerified){ setMessage("authMessage","بريدك غير مؤكد. أرسلنا رابط تأكيد، تفقد إيميلك.",true); await cred.user.sendEmailVerification(); return}
     closeModal("authModal");
   }catch(err){ console.error(err); setMessage("authMessage",authError(err.code),true)}
 });
@@ -234,9 +232,8 @@ document.getElementById("registerForm").addEventListener("submit",async e=>{
   try{
     const cred=await auth.createUserWithEmailAndPassword(email,pass);
     await cred.user.updateProfile({displayName:name});
-    await cred.user.sendEmailVerification();
-    setMessage("registerMessage","تم إنشاء الحساب! أرسلنا لك رابط تأكيد على بريدك، أكد ثم سجل الدخول.",false);
-    setTimeout(()=>showAuthPanel("login"),2000);
+    setMessage("registerMessage","تم إنشاء الحساب! يمكنك تسجيل الدخول الآن.",false);
+    setTimeout(()=>showAuthPanel("login"),1500);
   }catch(err){ console.error(err); setMessage("registerMessage",authError(err.code),true)}
 });
 
@@ -249,7 +246,7 @@ document.getElementById("resetForm").addEventListener("submit",async e=>{
 
 document.getElementById("adForm").addEventListener("submit",async e=>{
   e.preventDefault();
-  if(!currentUser||!currentUser.emailVerified) return setMessage("adMessage","أكد بريدك أولاً",true);
+  if(!currentUser) return setMessage("adMessage","سجل دخول أولاً",true);
   const title=document.getElementById("adTitle").value.trim();
   const description=document.getElementById("adDescription").value.trim();
   const category=document.getElementById("adCategory").value;
